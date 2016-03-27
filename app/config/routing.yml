@@ -1,3 +1,8 @@
+code_produdo:
+    resource: "@CodeProdudoBundle/Controller/"
+    type:     annotation
+    prefix:   /produtos/
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
