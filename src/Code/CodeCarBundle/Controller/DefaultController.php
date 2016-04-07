@@ -5,6 +5,7 @@ namespace Code\CodeCarBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Code\CodeCarBundle\Entity\Carro;
 
 class DefaultController extends Controller
 {
@@ -14,50 +15,20 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        
-        return [
-            'cars' => [
-                [
-                    'marca' => 'fiat',
-                    'modelo' => 'uno'
-                ],
-                [
-                    'marca' => 'fiat',
-                    'modelo' => 'palio'
-                ],
-                [
-                    'marca' => 'ford',
-                    'modelo' => 'ka'
-                ],
-                [
-                    'marca' => 'chevrolet',
-                    'modelo' => 's10'
-                ],
-                [
-                    'marca' => 'volkswagen',
-                    'modelo' => 'gol'
-                ],
-                [
-                    'marca' => 'volkswagen',
-                    'modelo' => 'golf'
-                ],
-                [
-                    'marca' => 'volkswagen',
-                    'modelo' => 'fusca'
-                ],
-                [
-                    'marca' => 'renault',
-                    'modelo' => 'clio'
-                ],
-                [
-                    'marca' => 'peuegeot',
-                    'modelo' => '308'
-                ],
-                [
-                    'marca' => 'nissan',
-                    'modelo' => '350z'
-                ],
+        $ano = new \DateTime('1994');
+        $carro = new Carro();
+        $carro->setModelo('palio');
+        $carro->setAno($ano);
+        $carro->setCor("azul");
+        $repository = $this->getDoctrine()
+                            ->getRepository("CodeCodeCarBundle:Carro");
+        $repository->salvarCarro($carro);
+        $carros = $repository->getTodosCarros();
+
+        return
+            [
+                'carros' => $carros
             ]
-        ];
+        ;
     }
 }

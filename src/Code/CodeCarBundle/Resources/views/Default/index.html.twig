@@ -2,25 +2,37 @@
 {% block content %}
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h2 class="panel-title">Tabela de carros</h2>    
+            <h2 class="panel-title">Tabela de carros</h2>
         </div>
         <div class="panel-body">
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Marca</th>
+                        <th>Fabricante</th>
                         <th>Modelo</th>
+                        <th>Ano</th>
+                        <th>Cor</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in cars %}
-                    <tr>                        
-                        <td> {{ item.marca }}  </td>
-                        <td> {{ item.modelo }}  </td>                        
+                    {% for carro in carros %}
+                    <tr>
+                        <td>
+                            {{ carro.fabricante }}
+                        </td>
+                        <td>
+                            {{ carro.modelo }}
+                        </td>
+                        <td>
+                            {{ carro.ano|date("Y") }}
+                        </td>
+                        <td>
+                            {{ carro.cor }}
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
-        </div>       
+        </div>
     </div>
 {% endblock %}
