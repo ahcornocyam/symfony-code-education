@@ -32,6 +32,12 @@
             * @ORM\Column(name="description", type="text")
             */
             private $description;
+            /**
+            *@ORM\OneToOne(targetEntity="ProdutoDetalhe")
+            *@ORM\JoinColumn(name="produto_detalhe_id", referencedColumnName="id")
+            *
+            */
+            private $detalhe;
 
             /**
             * @return mixed
@@ -80,4 +86,29 @@
                 $this->description = $description;
                 return $this;
             }
-    }
+
+          /**
+           * Get the value of Detalhe
+           *
+           * @return mixed
+           */
+          public function getDetalhe()
+          {
+              return $this->detalhe;
+          }
+
+          /**
+           * Set the value of Detalhe
+           *
+           * @param mixed detalhe
+           *
+           * @return self
+           */
+          public function setDetalhe($detalhe)
+          {
+              $this->detalhe = $detalhe;
+
+              return $this;
+          }
+
+}

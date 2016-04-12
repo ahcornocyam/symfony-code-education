@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Code\ProdudoBundle\Entity\Produto as Produto;
+use Code\ProdudoBundle\Entity\ProdutoDetalhe as ProdutoDetalhe;
 
 class DefaultController extends Controller
 {
@@ -25,11 +26,17 @@ class DefaultController extends Controller
     public function testAction()
     {
         $produto  = new Produto();
-        $produto->setName("Notebook 1");
-        $produto->setDescription("Descrição do notebook 1");
+        $produto->setName("Notebook detalhe");
+        $produto->setDescription("Descrição do notebook detalhe");
+        $detalhe = new ProdutoDetalhe();
+        $detalhe->setAltura(10);
+        $detalhe->setLargura(19);
+        $detalhe->setPeso(15);
+        $produto->setDetalhe($detalhe);
 
         //persistindo no banco de dados com o doctrine
         $em =$this->getDoctrine()->getEntityManager();
+        $em->persist($detalhe);
         $em->persist($produto);
         $em->flush();
 

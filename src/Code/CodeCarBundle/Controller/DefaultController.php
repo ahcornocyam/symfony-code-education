@@ -24,7 +24,6 @@ class DefaultController extends Controller
                             ->getRepository("CodeCodeCarBundle:Carro");
         $repository->salvarCarro($carro);
         $carros = $repository->getTodosCarros();
-
         return
             [
                 'carros' => $carros

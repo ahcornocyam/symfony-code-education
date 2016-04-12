@@ -13,6 +13,9 @@
               <th>
                   Descrição
               </th>
+              <th>
+                Detalhes do Produto
+              </th>
           </tr>
       </thead>
       <tbody>
@@ -27,6 +30,13 @@
               </td>
               <td>
                   {{ produto.description }}
+              </td>
+              <td>
+                <ul>
+                  <li>Peso: {{produto.detalhe.peso}}</li>
+                  <li>Altura: {{produto.detalhe.altura}}</li>
+                  <li>Largura: {{produto.detalhe.largura}}</li>
+                </ul>
               </td>
           </tr>
           {% endfor %}
