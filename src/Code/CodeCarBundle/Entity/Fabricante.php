@@ -2,6 +2,8 @@
     namespace Code\CodeCarBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
+
+use Doctrine\Common\Collections\ArrayCollection;
     /**
     * Fabricantes
     * @ORM\Table()
@@ -21,6 +23,15 @@
         * @ORM\Column(name="nome", type="string", length=40)
         */
         private $nome;
+        /**
+        * @var integer
+        * @ORM\OneToMany(targetEntity="Carro", mappedBy="fabricante", cascade={"persist"})
+        */
+        private $carros;
+
+        public function __construct() {
+          $this->carros = new ArrayCollection();
+        }
 
         /**
         *
@@ -53,4 +64,30 @@
             $this->nome = $nome;
             return $this;
         }
+
+    /**
+     * Get the value of Carros
+     *
+     * @return mixed
+     */
+    public function getCarros()
+    {
+        return $this->carros;
     }
+
+
+    /**
+     * Set the value of Carros
+     *
+     * @param mixed carros
+     *
+     * @return self
+     */
+    public function setCarros($carros)
+    {
+        $this->carros = $carros;
+
+        return $this;
+    }
+
+}

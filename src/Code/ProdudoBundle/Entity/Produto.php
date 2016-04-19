@@ -38,6 +38,12 @@
             *
             */
             private $detalhe;
+            /**
+            *@ORM\ManyToOne(targetEntity="Code\CategoryBundle\Entity\Category", inversedBy="produtos")
+            *@ORM\JoinColumn(name="category_id", referencedColumnName="id")
+            *
+            */
+            private $categoria;
 
             /**
             * @return mixed
@@ -110,5 +116,30 @@
 
               return $this;
           }
+
+
+    /**
+     * Get the value of Categoria
+     *
+     * @return mixed
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    /**
+     * Set the value of Categoria
+     *
+     * @param mixed categoria
+     *
+     * @return self
+     */
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
+
+        return $this;
+    }
 
 }

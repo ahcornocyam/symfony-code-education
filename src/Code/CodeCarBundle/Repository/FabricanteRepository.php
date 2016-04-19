@@ -14,4 +14,11 @@
                         ->getResult()
             ;
         }
+
+        public function salvarFabricante($fabricante)
+        {
+            $em = $this->getEntityManager();
+            $em->persist($fabricante);
+            $em->flush();
+        }
     }

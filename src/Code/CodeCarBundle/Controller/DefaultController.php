@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Code\CodeCarBundle\Entity\Carro;
+use Code\CodeCarBundle\Entity\Fabricante;
 
 class DefaultController extends Controller
 {
@@ -15,18 +16,33 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
+
+        $fabricante = new Fabricante();
+        $fabricante->setNome('Fiat');
+
         $ano = new \DateTime('1994');
+
         $carro = new Carro();
         $carro->setModelo('palio');
         $carro->setAno($ano);
         $carro->setCor("azul");
-        $repository = $this->getDoctrine()
+        $carro->setFabricante($fabricante);
+
+        $carRepo = $this->getDoctrine()
                             ->getRepository("CodeCodeCarBundle:Carro");
-        $repository->salvarCarro($carro);
-        $carros = $repository->getTodosCarros();
+        $fabricanteRepo = $this->getDoctrine()
+                            ->getRepository("CodeCodeCarBundle:Fabricante");
+
+        $fabricanteRepo->salvarFabricante($fabricante);
+        $carRepo->salvarCarro($carro);
+
+        $carros = $carRepo->getTodosCarros();
+        $fabricantes = $fabricanteRepo->getTodosFabricantes();
+
         return
             [
-                'carros' => $carros
+                'carros' => $carros,
+                'fabricantes' => $fabricantes
             ]
         ;
     }

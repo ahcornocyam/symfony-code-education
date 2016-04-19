@@ -5,34 +5,75 @@
             <h2 class="panel-title">Tabela de carros</h2>
         </div>
         <div class="panel-body">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Fabricante</th>
-                        <th>Modelo</th>
-                        <th>Ano</th>
-                        <th>Cor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for carro in carros %}
-                    <tr>
+          <div class="well">
+            <header>
+                <h2>Listagem de carros</h2>
+            </header>
+            <section>
+              <table class="table table-hover">
+                  <thead>
+                      <tr>
+                          <th>Fabricante</th>
+                          <th>Modelo</th>
+                          <th>Ano</th>
+                          <th>Cor</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {% for carro in carros %}
+                      <tr>
+                          <td>
+                              {{ carro.fabricante.nome }}
+                          </td>
+                          <td>
+                              {{ carro.modelo }}
+                          </td>
+                          <td>
+                              {{ carro.ano|date("Y") }}
+                          </td>
+                          <td>
+                              {{ carro.cor }}
+                          </td>
+                      </tr>
+                      {% endfor %}
+                  </tbody>
+              </table>
+            </section>
+          </div>
+          <div class="well">
+              <header>
+                <h2>Listagem de Fabricantes</h2>
+              </header>
+              <section>
+                <table class="table table-hover">
+                    <thead>
+                      <th>
+                        Nome
+                      </th>
+                      <th>
+                        Carros
+                      </th>
+                    </thead>
+                    <tbody>
+                      {% for fabricante in fabricantes %}
+                      <tr>
                         <td>
-                            {{ carro.fabricante }}
+                            {{ fabricante.nome }}
                         </td>
                         <td>
-                            {{ carro.modelo }}
+                            <ul>
+                              {% for carro in fabricante.carros %}
+                              <li>{{ carro.modelo }}</li>
+                              <li>{{ carro.ano|date("Y") }}</li>
+                              {% endfor %}
+                            </ul>
                         </td>
-                        <td>
-                            {{ carro.ano|date("Y") }}
-                        </td>
-                        <td>
-                            {{ carro.cor }}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+              </section>
+          </div>
         </div>
     </div>
 {% endblock %}
