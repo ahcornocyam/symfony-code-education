@@ -29,6 +29,14 @@ class DefaultController extends Controller
         $category = new Category();
         $category->setNome('Informática');
 
+        $category2 = new Category();
+        $category2->setNome('Eletroncicos');
+
+        $category3 = new Category();
+        $category3->setNome('Livros');
+
+
+
         $detalhe = new ProdutoDetalhe();
         $detalhe->setAltura(10);
         $detalhe->setLargura(19);
@@ -38,11 +46,15 @@ class DefaultController extends Controller
         $produto->setName("Notebook detalhe");
         $produto->setDescription("Descrição do notebook detalhe");
         $produto->setDetalhe($detalhe);
-        $produto->setCategoria($category);
+        $produto->addCategoria($category);
+        $produto->addCategoria($category2);
+        $produto->addCategoria($category3);
 
         //persistindo no banco de dados com o doctrine
         $em =$this->getDoctrine()->getEntityManager();
         $em->persist($category);
+        $em->persist($category2);
+        $em->persist($category3);
         $em->persist($detalhe);
         $em->persist($produto);
         $em->flush();

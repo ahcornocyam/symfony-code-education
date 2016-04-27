@@ -35,7 +35,11 @@
                   {{ produto.description }}
               </td>
               <td>
-                {{ produto.categoria.nome }}
+                <ul>
+                  {% for categoria in produto.categorias %}
+                  <li>{{categoria.nome}}</li>
+                  {% endfor %}
+                </ul>
               </td>
               <td>
                 <ul>

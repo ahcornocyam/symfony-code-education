@@ -32,7 +32,11 @@ class Category
 
     /**
     * @var integer
-    * @ORM\OneToMany(targetEntity="Code\ProdudoBundle\Entity\Produto", mappedBy="categoria" )
+    * @ORM\ManyToMany(targetEntity="Code\ProdudoBundle\Entity\Produto" inversedBy="categorias")
+    * @ORM\JoinTable(name="categorys_produtcs",
+    *                 joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
+    *                inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
+    *               )
     */
     private $produtos;
 
@@ -106,9 +110,9 @@ class Category
      *
      * @return self
      */
-    public function setProdutos($produtos)
+    public function addProduto($produto)
     {
-        $this->produtos = $produtos;
+        $this->produtos[] = $produto;
 
         return $this;
     }

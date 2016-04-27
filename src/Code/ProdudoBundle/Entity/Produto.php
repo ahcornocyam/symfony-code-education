@@ -3,6 +3,8 @@
     namespace Code\ProdudoBundle\Entity;
 
     use Doctrine\ORM\Mapping as ORM;
+
+use Doctrine\Common\Collections\ArrayCollection;
     /**
     * Produtos
     * @ORM\Table()
@@ -39,11 +41,15 @@
             */
             private $detalhe;
             /**
-            *@ORM\ManyToOne(targetEntity="Code\CategoryBundle\Entity\Category", inversedBy="produtos")
-            *@ORM\JoinColumn(name="category_id", referencedColumnName="id")
+            *@ORM\ManyToMany(targetEntity="Code\CategoryBundle\Entity\Category", mappedBy="produtos")
             *
             */
-            private $categoria;
+            private $categorias;
+
+
+            public function __construct() {
+              $this->categorias = new ArrayCollection();
+            }
 
             /**
             * @return mixed
@@ -119,25 +125,25 @@
 
 
     /**
-     * Get the value of Categoria
+     * Get the value of Categorias
      *
      * @return mixed
      */
-    public function getCategoria()
+    public function getCategorias()
     {
-        return $this->categoria;
+        return $this->categorias;
     }
 
     /**
-     * Set the value of Categoria
+     * Set the value of Categorias
      *
-     * @param mixed categoria
+     * @param mixed categorias
      *
      * @return self
      */
-    public function setCategoria($categoria)
+    public function addCategoria($categoria)
     {
-        $this->categoria = $categoria;
+        $this->categorias[] = $categoria;
 
         return $this;
     }
