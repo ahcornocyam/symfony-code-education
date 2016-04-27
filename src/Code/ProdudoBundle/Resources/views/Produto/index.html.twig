@@ -1,0 +1,46 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+  <div class="container-fluid panel panel-primary">
+    <header class="panel-heading">
+      <h1>Area destinada aos Produtos</h1>
+    </header>
+    <section class="panel-body">
+      <nav class="navbar navbar-default">
+          <ul class="nav navbar-nav">
+            <li><a href="{{ path('produto_new') }}" class="">novo</a></li>
+          </ul>
+      </nav>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Detalhe</th>
+            <th>Categorias</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for produto in produtos %}
+          <tr>
+            <td>{{ produto.id }}</td>
+            <td>{{ produto.name }}</td>
+            <td>{{ produto.description }}</td>
+            <td>
+              <ul>
+              </ul>
+            </td>
+            <td>
+              <ul>                
+              </ul>
+            </td>
+            <td></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+{% endblock %}

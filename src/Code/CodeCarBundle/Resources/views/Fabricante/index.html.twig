@@ -1,0 +1,33 @@
+{% extends 'CodeCodeCarBundle:Default:layout.html.twig' %}
+{% block content %}
+  <div class="panel panel-success">
+    <header class="panel-heading">
+      <h1>Fabricantes</h1>
+    </header>
+    <section class="panel-body">
+      <nav class="navbar navbar-default">
+          <ul class="nav navbar-nav">
+            <li><a href="{{ path('fabricante_new') }}" class="">novo</a></li>
+          </ul>
+      </nav>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for fabricante in fabricantes %}
+            <tr>
+              <td>{{ fabricante.id }}</td>
+              <td>{{ fabricante.nome }}</td>
+              <td></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </section>
+  </div>
+{% endblock %}

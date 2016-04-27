@@ -1,0 +1,22 @@
+{% extends 'CodeCodeCarBundle:Default:layout.html.twig' %}
+
+{% block content %}
+<div class="panel panel-primary">
+  <header class="panel-heading">
+    <h1>Novo Fabricante</h1>
+  </header>
+
+  <section class="panel-body">
+      <form class="form" action="{{ path('fabricante_create')}}" method="post">
+          <div class="form-group">
+              {{ form_widget(form) }}
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="{{ path('fabricante') }}" class="btn btn-danger">Voltar</a>
+          </div>
+      </form>
+  </section>
+
+</div>
+{% endblock %}

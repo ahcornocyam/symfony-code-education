@@ -26,29 +26,29 @@ class DefaultController extends Controller
     */
     public function testAction()
     {
-        $category = new Category();
-        $category->setNome('Informática');
+        // $category = new Category();
+        // $category->setNome('Informática');
+        //
+        // $category2 = new Category();
+        // $category2->setNome('Eletroncicos');
+        //
+        // $category3 = new Category();
+        // $category3->setNome('Livros');
 
-        $category2 = new Category();
-        $category2->setNome('Eletroncicos');
-
-        $category3 = new Category();
-        $category3->setNome('Livros');
 
 
-
-        $detalhe = new ProdutoDetalhe();
-        $detalhe->setAltura(10);
-        $detalhe->setLargura(19);
-        $detalhe->setPeso(15);
+        // $detalhe = new ProdutoDetalhe();
+        // $detalhe->setAltura(10);
+        // $detalhe->setLargura(19);
+        // $detalhe->setPeso(15);
 
         $produto  = new Produto();
         $produto->setName("Notebook detalhe");
         $produto->setDescription("Descrição do notebook detalhe");
-        $produto->setDetalhe($detalhe);
-        $produto->addCategoria($category);
-        $produto->addCategoria($category2);
-        $produto->addCategoria($category3);
+        // $produto->setDetalhe($detalhe);
+        // $produto->addCategoria($category);
+        // $produto->addCategoria($category2);
+        // $produto->addCategoria($category3);
 
         //persistindo no banco de dados com o doctrine
         $em =$this->getDoctrine()->getEntityManager();

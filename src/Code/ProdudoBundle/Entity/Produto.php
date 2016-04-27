@@ -34,17 +34,17 @@ use Doctrine\Common\Collections\ArrayCollection;
             * @ORM\Column(name="description", type="text")
             */
             private $description;
-            /**
-            *@ORM\OneToOne(targetEntity="ProdutoDetalhe")
-            *@ORM\JoinColumn(name="produto_detalhe_id", referencedColumnName="id")
-            *
-            */
-            private $detalhe;
-            /**
-            *@ORM\ManyToMany(targetEntity="Code\CategoryBundle\Entity\Category", mappedBy="produtos")
-            *
-            */
-            private $categorias;
+            // /**
+            // *@ORM\OneToOne(targetEntity="ProdutoDetalhe")
+            // *@ORM\JoinColumn(name="produto_detalhe_id", referencedColumnName="id")
+            // *
+            // */
+            // private $detalhe;
+            // /**
+            // *@ORM\ManyToMany(targetEntity="Code\CategoryBundle\Entity\Category", mappedBy="produtos")
+            // *
+            // */
+            // private $categorias;
 
 
             public function __construct() {
