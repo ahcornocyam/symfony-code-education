@@ -40,11 +40,16 @@ use Doctrine\Common\Collections\ArrayCollection;
             // *
             // */
             // private $detalhe;
-            // /**
-            // *@ORM\ManyToMany(targetEntity="Code\CategoryBundle\Entity\Category", mappedBy="produtos")
-            // *
-            // */
-            // private $categorias;
+
+            /**
+            * @var integer
+            * @ORM\ManyToMany(targetEntity="Code\CategoryBundle\Entity\Category", inversedBy="produtos")
+            * @ORM\JoinTable(name="categorys_produtcs",
+            *                 joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
+            *                inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
+            *               )
+            */
+            private $categorias;
 
 
             public function __construct() {

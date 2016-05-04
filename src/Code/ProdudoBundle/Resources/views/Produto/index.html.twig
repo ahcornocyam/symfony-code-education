@@ -8,7 +8,7 @@
     <section class="panel-body">
       <nav class="navbar navbar-default">
           <ul class="nav navbar-nav">
-            <li><a href="{{ path('produto_new') }}" class="">novo</a></li>
+            <li><a href="{{ path('produto_new') }}" class="btn btn-default">novo</a></li>
           </ul>
       </nav>
       <table class="table">
@@ -33,10 +33,16 @@
               </ul>
             </td>
             <td>
-              <ul>                
+              <ul>
+                {% for categoria in produto.categorias %}
+                  <li> {{ categoria.nome }} </li>
+                {% endfor %}
               </ul>
             </td>
-            <td></td>
+            <td>
+              <a href="{{ path('produto_edit', {'id' : produto.id} ) }}" class="btn btn-primary"> editar</a> |
+              <a href="{{ path('produto_delete', {'id' : produto.id} ) }}" class="btn btn-danger"> remover</a>
+            </td>
           </tr>
           {% endfor %}
         </tbody>

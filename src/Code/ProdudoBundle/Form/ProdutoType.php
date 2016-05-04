@@ -30,7 +30,7 @@ class ProdutoType extends AbstractType
               ]
             ])
             //->add('detalhe')
-            //->add('categorias')
+            ->add('categorias')
         ;
     }
 
@@ -42,5 +42,5 @@ class ProdutoType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'Code\ProdudoBundle\Entity\Produto'
         ));
-    } 
+    }
 }

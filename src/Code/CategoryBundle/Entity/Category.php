@@ -32,11 +32,7 @@ class Category
 
     /**
     * @var integer
-    * @ORM\ManyToMany(targetEntity="Code\ProdudoBundle\Entity\Produto", inversedBy="categorias")
-    * @ORM\JoinTable(name="categorys_produtcs",
-    *                 joinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")},
-    *                inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
-    *               )
+    * @ORM\ManyToMany(targetEntity="Code\ProdudoBundle\Entity\Produto", mappedBy="categorias")
     */
     private $produtos;
 
@@ -115,6 +111,11 @@ class Category
         $this->produtos[] = $produto;
 
         return $this;
+    }
+
+    public function __toString ()
+    {
+        return $this->getNome();
     }
 
 }

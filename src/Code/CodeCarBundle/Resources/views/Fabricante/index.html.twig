@@ -7,7 +7,7 @@
     <section class="panel-body">
       <nav class="navbar navbar-default">
           <ul class="nav navbar-nav">
-            <li><a href="{{ path('fabricante_new') }}" class="">novo</a></li>
+            <li><a href="{{ path('fabricante_new') }}" class="btn btn-defautl">novo</a></li>
           </ul>
       </nav>
         <table class="table">
@@ -23,7 +23,10 @@
             <tr>
               <td>{{ fabricante.id }}</td>
               <td>{{ fabricante.nome }}</td>
-              <td></td>
+              <td>
+                <a href="{{ path('fabricante_edit', { 'id': fabricante.id } ) }}" class="btn btn-primary"> Editar</a> |
+                <a href="{{ path('fabricante_delete', { 'id': fabricante.id } ) }}" class="btn btn-danger"> Remover</a>
+              </td>
             </tr>
             {% endfor %}
           </tbody>
