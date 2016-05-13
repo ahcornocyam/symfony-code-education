@@ -56,9 +56,8 @@ class ProdutoController extends Controller
     $form = $this->createForm(new ProdutoType, $entity);
     $form->bind($request);
     if ($form->isValid()) {
-      $em = $this->getDoctrine()->getEntityManager();
-      $em->persist($entity);
-      $em->flush();
+      $produtoService = $this->get('code_produdo.manager.produto');
+      $entity = $produtoService->insert($entity);
 
       return $this->redirect($this->generateUrl('produto'));
     }
@@ -101,8 +100,8 @@ class ProdutoController extends Controller
     $form = $this->createForm(new ProdutoType(), $entity );
     $form->bind($request);
     if($form->isValid() ) {
-      $em->persist($entity);
-      $em->flush();
+      $produtoService = $this->get('code_produdo.manager.produto');
+      $entity = $produtoService->insert($entity);
       return $this->redirect($this->generateUrl('produto'));
     }
 

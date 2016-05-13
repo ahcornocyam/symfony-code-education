@@ -5,12 +5,14 @@
     use Doctrine\ORM\Mapping as ORM;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
+use Code\ProdudoBundle\Entity\ProdutoInterface;
     /**
     * Produtos
     * @ORM\Table()
     * @ORM\Entity(repositoryClass="ProdutoRepository")
     */
-    class Produto
+    class Produto implements ProdutoInterface
     {
             /**
             * @var integer

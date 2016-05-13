@@ -55,9 +55,9 @@ class FabricanteController extends Controller
         $form = $this->createForm(new FabricanteType, $entity );
         $form->bind($request);
         if ($form->isValid()) {
-          $em = $this->getDoctrine()->getEntityManager();
-          $em->persist($entity);
-          $em->flush();
+
+          $fabricanteService = $this->get('code_code_car.manager.fabricante');
+          $entity = $fabricanteService->insert($entity);
 
           return $this->redirect($this->generateUrl('fabricante'));
         }
@@ -103,8 +103,8 @@ class FabricanteController extends Controller
       $form = $this->createForm(new FabricanteType(), $entity );
       $form->bind($request);
       if($form->isValid() ) {
-        $em->persist($entity);
-        $em->flush();
+        $fabricanteService = $this->get('code_code_car.manager.fabricante');
+        $entity = $fabricanteService->insert($entity);
         return $this->redirect($this->generateUrl('fabricante'));
       }
 
@@ -127,8 +127,8 @@ class FabricanteController extends Controller
         throw $this->createNotFoundException( "registro não encontrado");
       }
 
-      $em->remove($entity);
-      $em->flush();
+      $fabricanteService = $this->get('code_code_car.manager.fabricante');
+      $entity = $fabricanteService->remove($entity);
 
       return $this->redirect($this->generateUrl('fabricante'));
 

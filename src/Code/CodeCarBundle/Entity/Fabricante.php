@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
     * @ORM\Table()
     * @ORM\Entity(repositoryClass="Code\CodeCarBundle\Repository\FabricanteRepository")
     */
-    class Fabricante
+    class Fabricante implements FabricanteInterface
     {
         /**
         * @var integer
